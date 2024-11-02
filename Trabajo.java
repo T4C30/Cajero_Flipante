@@ -1,27 +1,28 @@
+
 import java.util.Scanner;
 
 public class Trabajo {
     public static void main(String[] args) {
         // Escaner
         Scanner teclado = new Scanner(System.in);
+        
         // texto
         String caso;
 
-        // enteros
+        // Contadores
         int ingresos = 0;
         int retirar = 0;
 
         // Dinero
         float saldo = 0;
-        float incremento = 0;
-        float disminuir = 0;
+        float incremento;
+        float disminuir;
         float importetotal = 0;
         float retirado = 0;
         
         // Decisión
         boolean confirmar = true;
         
-
 
         do {  // Inicio el programa para el usuario con un do-while al ser un bucle indeterminado, se espera que vuelva a la interfaz de inicio que sirve de guía         
         System.out.println("-------------------------------");
@@ -74,12 +75,13 @@ public class Trabajo {
                         System.out.println("Error [C3] (Revise el manual para más información)");
                         break;
                     }
+                    disminuir = Math.abs(disminuir);
                     float cath = (float) (Math.round(disminuir * 100.0) / 100.0);
                         if (disminuir != cath){  // Si el usuario pone cualquier valor que sea mayor de 2 decimales
                             System.out.println("Error [C3.1] (Revise el manual para más información)");
                             break;
                         }
-                        if (disminuir<saldo) { // Comete un error el usuario en los valores devolviendolo al inicio
+                        if (disminuir>saldo) { // Comete un error el usuario en los valores devolviendolo al inicio
                             System.out.println("Error [C3.2] (Revise el manual para más información)");
                         } else { // Ruta normal que permite la ejecución correcta del programa
                             retirar++;
