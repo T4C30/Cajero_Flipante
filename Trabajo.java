@@ -86,6 +86,7 @@ public class Trabajo {
                         } else { // Ruta normal que permite la ejecución correcta del programa
                             retirar++;
                             saldo = saldo - disminuir;
+                            saldo = (float) (Math.round(saldo * 100.0) / 100.0);
                             retirado = retirado + disminuir;
                         }
                     break;
