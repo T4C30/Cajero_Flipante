@@ -1,0 +1,54 @@
+@startuml
+' Declaración de estilo opcional para mejorar la apariencia
+skinparam linetype ortho
+skinparam shadowing false
+skinparam handwritten false
+skinparam classAttributeIconSize 0
+skinparam roundCorner 10
+' La siguiente línea a veces puede causar problemas con algunos renderizadores o versiones antiguas:
+' hide empty members ' Oculta miembros vacíos para un look más limpio de tabla
+
+' Título del diagrama
+title Modelo Relacional (Lógico/Físico)
+
+' Definición de Tablas (usando la sintaxis de 'class' para representar tablas)
+class Clientes {
+  + ID_Cliente : INTEGER {PK}
+  --
+  Nombre : VARCHAR(100)
+  Email : VARCHAR(100) {UNIQUE}
+  Direccion : VARCHAR(255)
+}
+
+class Pedidos {
+  + ID_Pedido : INTEGER {PK}
+  --
+  FechaPedido : DATE
+  EstadoPedido : VARCHAR(50)
+  ID_Cliente : INTEGER {FK}
+}
+
+class Productos {
+  + ID_Producto : INTEGER {PK}
+  --
+  NombreProducto : VARCHAR(100)
+  PrecioUnitario : DECIMAL(10,2)
+  Stock : INTEGER
+}
+
+' Tabla de Unión para la relación M:N entre Pedidos y Productos
+class DetallesPedido {
+  + ID_DetallePedido : INTEGER {PK}
+  --
+  ID_Pedido : INTEGER {FK}
+  ID_Producto : INTEGER {FK}
+  Cantidad : INTEGER
+  PrecioVenta : DECIMAL(10,2) ' Precio al momento de la venta
+}
+
+' Definición de Relaciones (Claves Foráneas)
+Clientes "1" -- "*" Pedidos : FK ID_Cliente
+Pedidos "1" -- "*" DetallesPedido : FK ID_Pedido
+Productos "1" -- "*" DetallesPedido : FK ID_Producto
+
+@enduml
