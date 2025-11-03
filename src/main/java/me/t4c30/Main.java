@@ -1,9 +1,12 @@
+package me.t4c30;
 
 import java.util.Scanner;
 
-public class CodigoFuente {
+import me.t4c30.vista.PantallaPrincipal;
+
+public class Main {
     public static void main(String[] args) {
-        // Escaner
+        PantallaPrincipal pantallaPrincipal = new PantallaPrincipal();
         Scanner teclado = new Scanner(System.in);
         
         // texto
@@ -110,6 +113,5 @@ public class CodigoFuente {
         System.out.println("         Importe total Retirado:    $" + retirado);
         System.out.println("         Saldo Final en Cuenta:     $" + saldo);
         System.out.println("-----------------------------------------------");
-
     }
 }
