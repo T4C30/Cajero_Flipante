@@ -1,13 +1,10 @@
 package me.t4c30;
 
-import java.util.Scanner;
-
 import me.t4c30.vista.PantallaPrincipal;
 
 public class Main {
     public static void main(String[] args) {
         PantallaPrincipal pantallaPrincipal = new PantallaPrincipal();
-        Scanner teclado = new Scanner(System.in);
         
         // texto
         String caso;
@@ -27,20 +24,9 @@ public class Main {
         boolean confirmar = true;
         
 
-        do {  // Inicio el programa para el usuario con un do-while al ser un bucle indeterminado, se espera que vuelva a la interfaz de inicio que sirve de guía         
-        System.out.println("-------------------------------");
-        System.out.println("|       Cajero Automático     |");
-        System.out.println("|                             |");
-        System.out.println("-------------------------------");
-        System.out.println("|      1. Consultar saldo     |");
-        System.out.println("|      2. Depositar dinero    |");
-        System.out.println("|      3. Retirar dinero      |");
-        System.out.println("|      4. Salir               |");
-        System.out.println("|                             |");
-        System.out.println("-------------------------------\n");
-        System.out.print("Elija una opción: ");
+        do {         
 
-        caso = teclado.nextLine();
+        caso = "4";
             switch (caso) {
                 case "1": //revisa el saldo y rompe al acaba 
                     System.out.println("Su saldo actual es: $" + saldo);
@@ -48,7 +34,7 @@ public class Main {
                 case "2":                    
                 try { // Intenta ejecutar el programa
                     System.out.println("Ingrese la cantidad a depositar: ");
-                    incremento = Float.valueOf(teclado.nextLine());
+                    incremento = Float.valueOf(0);
                     }
                     catch(Exception e) { // Si el usuario pone cualquier valor que no entre en el dominio float
                         System.out.println("Error [C2] (Revise el manual para más información)");
@@ -72,7 +58,7 @@ public class Main {
                 case "3":
                 try { // Intenta ejecutar el programa
                     System.out.println("Ingrese la cantidad a retirar: ");
-                    disminuir = Float.valueOf(teclado.nextLine());
+                    disminuir = Float.valueOf(0);
                     }
                     catch(Exception e) { // Si el usuario pone cualquier valor que no entre en el dominio float
                         System.out.println("Error [C3] (Revise el manual para más información)");
@@ -103,15 +89,5 @@ public class Main {
             }
         }while (confirmar);
 
-        teclado.close();
-        // Estadísticas finales
-        System.out.println("Gracios por usa el cajero automático. ¡Hasta luego!");
-        System.out.println("------------ESTADÍSTICAS DE USO----------------");
-        System.out.println("         Número total de Ingresos:   " + ingresos);
-        System.out.println("         Importe total Ingresado:   $" + importetotal);
-        System.out.println("         Número total de Retiradas:  " + retirar);
-        System.out.println("         Importe total Retirado:    $" + retirado);
-        System.out.println("         Saldo Final en Cuenta:     $" + saldo);
-        System.out.println("-----------------------------------------------");
     }
 }
